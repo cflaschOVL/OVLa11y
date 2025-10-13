@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessible Website Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Skip Links -->
+    <div class="skip-links">
+      <a href="#main-navigation" class="skip-link">Skip to navigation</a>
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      <a href="#footer" class="skip-link">Skip to footer</a>
+    </div>
+
+    <!-- Header -->
+    <header role="banner" class="site-header">
+      <div class="header-content">
+        <a href="/" class="logo" aria-label="Home">
+          <img
+            src="logo.png"
+            srcset="logo.png 150w"
+            sizes="(max-width: 768px) 120px,
+                   150px"
+            alt="Overlap Rocket Logo"
+            width="150"
+            height="50"
+            loading="eager"
+          />
+        </a>
+
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-navigation"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="hamburger"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+
+        <nav
+          id="main-navigation"
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          <h2 tabindex="-1" class="sr-only skip-link-target">Navigation</h2>
+          <ul>
+            <li><a href="#" aria-current="page">Home</a></li>
+            <li>
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+      <h1 tabindex="-1" class="sr-only skip-link-target">Main Content</h1>
+      <!-- Hero Section -->
+      <section class="hero" aria-label="Hero section">
+        <img
+          class="hero-image"
+          src="hero.png"
+          srcset="hero-mobile.png 768w, hero.png 1920w"
+          sizes="100vw"
+          alt="The Overlap Planetary System"
+          width="1920"
+          height="600"
+          loading="eager"
+          decoding="async"
+        />
+      </section>
+
+      <!-- Content Section -->
+      <section class="content-section">
+        <h1>Welcome to Our Accessible Website</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+
+        <h2>Our Services</h2>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur.
+          <a
+            href="#"
+            class="test-link disabled-link"
+            aria-label="Learn more about our services"
+            aria-disabled="true"
+            onclick="event.preventDefault()"
+            >Learn more about our services</a
+          >. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          officia deserunt mollit anim id est laborum.
+        </p>
+
+        <div class="button-container">
+          <button
+            type="button"
+            class="test-button button-disabled"
+            aria-disabled="true"
+            aria-label="Our Services"
+            onclick="event.preventDefault()"
+          >
+            <span class="button-icon" aria-hidden="true">📝</span>
+            <span class="button-text">Our Services</span>
+          </button>
+        </div>
+
+        <h2>Additional Information</h2>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo.
+        </p>
+
+        <div class="accordion-section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                aria-expanded="false"
+                class="accordion-trigger"
+                aria-controls="acc1-panel"
+                id="acc1-header"
+              >
+                <span class="accordion-title"
+                  >What makes our service unique?</span
+                >
+                <span class="accordion-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div
+              id="acc1-panel"
+              role="region"
+              aria-labelledby="acc1-header"
+              class="accordion-panel"
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                aria-expanded="false"
+                class="accordion-trigger"
+                aria-controls="acc2-panel"
+                id="acc2-header"
+              >
+                <span class="accordion-title">How do we ensure quality?</span>
+                <span class="accordion-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div
+              id="acc2-panel"
+              role="region"
+              aria-labelledby="acc2-header"
+              class="accordion-panel"
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                aria-expanded="false"
+                class="accordion-trigger"
+                aria-controls="acc3-panel"
+                id="acc3-header"
+              >
+                <span class="accordion-title">What are our core values?</span>
+                <span class="accordion-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div
+              id="acc3-panel"
+              role="region"
+              aria-labelledby="acc3-header"
+              class="accordion-panel"
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                  consequatur? Quis autem vel eum iure reprehenderit qui in ea
+                  voluptate velit esse quam nihil molestiae consequatur.
+                  <div id="acc3-panel-content-4"></div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" role="contentinfo">
+      <h2 tabindex="-1" class="sr-only skip-link-target">Footer</h2>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >Accessibility Statement</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <address>
+            <p>
+              Email:
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >info@example.com</a
+              >
+            </p>
+            <p>
+              Phone:
+              <a
+                href="#"
+                class="disabled-link"
+                aria-disabled="true"
+                onclick="event.preventDefault()"
+                >123-456-7890</a
+              >
+            </p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Accessible Website Demo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>
