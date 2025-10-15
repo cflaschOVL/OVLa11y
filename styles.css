@@ -14,7 +14,7 @@ body {
 }
 
 /* Full screen overlay */
-/* body::before {
+body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -24,7 +24,7 @@ body {
   background-color: #000;
   z-index: 999999;
   pointer-events: none;
-} */
+}
 
 /* Accessibility - Skip Links */
 .skip-links {
