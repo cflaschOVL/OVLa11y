@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (targetId === "main-navigation") {
         // Focus the navigation element itself
-        focusElement = document.getElementById(targetId);
+        focusElement = document.getElementById("main-navigation");
       } else if (targetId === "main-content") {
         // Focus the first visible headline in main content
         focusElement = document.getElementById("main-heading");
