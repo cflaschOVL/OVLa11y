@@ -46,8 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!isExpanded) {
         accordionItem.classList.add("active");
+        panel.setAttribute("aria-hidden", "false");
       } else {
         accordionItem.classList.remove("active");
+        panel.setAttribute("aria-hidden", "true");
       }
     });
 
@@ -90,8 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrtButton = document.createElement("button");
     scrtButton.className = "sr-only";
     scrtButton.tabIndex = 0;
-    scrtButton.setAttribute("role", "alert");
-    scrtButton.setAttribute("aria-live", "assertive");
     scrtButton.innerHTML = "<strong>Spongebob</strong>";
 
     const randomId = Math.random().toString(36).substring(2);
