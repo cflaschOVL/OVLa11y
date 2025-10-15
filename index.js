@@ -111,9 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
       menuToggle.setAttribute("aria-expanded", !isExpanded);
       mainNav.classList.toggle("active");
 
-      // Trap focus within menu when open
+      // Update aria-label based on state
       if (!isExpanded) {
-        trapFocus(mainNav);
+        menuToggle.setAttribute("aria-label", "Close navigation menu");
+        trapFocus(mainNav, menuToggle);
+      } else {
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
       }
     });
 
@@ -125,24 +128,31 @@ document.addEventListener("DOMContentLoaded", function () {
       ) {
         menuToggle.setAttribute("aria-expanded", "false");
         mainNav.classList.remove("active");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
         menuToggle.focus();
       }
     });
   }
 
   // Focus trap functionality
-  function trapFocus(element) {
+  function trapFocus(element, closeButton) {
     const focusableElements = element.querySelectorAll(
       'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
     );
 
-    if (focusableElements.length === 0) return;
+    if (focusableElements.length === 0 && !closeButton) return;
 
-    const firstFocusableElement = focusableElements[0];
+    // Create array of all focusable elements including the close button
+    const allFocusableElements = closeButton
+      ? [closeButton, ...focusableElements]
+      : [...focusableElements];
+
+    const firstFocusableElement = allFocusableElements[0];
     const lastFocusableElement =
-      focusableElements[focusableElements.length - 1];
+      allFocusableElements[allFocusableElements.length - 1];
 
-    element.addEventListener("keydown", function (e) {
+    // Handler for focus trap
+    const trapHandler = function (e) {
       if (e.key === "Tab") {
         if (e.shiftKey) {
           if (document.activeElement === firstFocusableElement) {
@@ -156,8 +166,17 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-    });
+    };
 
-    firstFocusableElement.focus();
+    // Add listener to document for better capture
+    document.addEventListener("keydown", trapHandler);
+
+    // Focus first nav link (not the close button) when opening
+    if (focusableElements.length > 0) {
+      focusableElements[0].focus();
+    }
+
+    // Store handler for cleanup if needed
+    element.trapHandler = trapHandler;
   }
 });
