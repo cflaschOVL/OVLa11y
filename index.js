@@ -9,12 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
       let focusElement = null;
 
       if (targetId === "main-navigation") {
-        // Focus the first focusable link in the navigation
-        const nav = document.getElementById(targetId);
-        const firstLink = nav.querySelector("a[href]");
-        if (firstLink) {
-          focusElement = firstLink;
-        }
+        // Focus the first link in the navigation
+        focusElement = document.getElementById("nav-home-link");
       } else if (targetId === "main-content") {
         // Focus the first visible headline in main content
         focusElement = document.getElementById("main-heading");
@@ -24,9 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (focusElement) {
-        focusElement.focus();
-        // Scroll into view if needed
-        focusElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        // For better mobile screen reader support, ensure element is in viewport first
+        focusElement.scrollIntoView({ behavior: "instant", block: "center" });
+
+        // Use requestAnimationFrame to ensure DOM is ready, then focus
+        requestAnimationFrame(() => {
+          focusElement.focus();
+
+          // Ensure the focus actually took - some screen readers need this
+          if (document.activeElement !== focusElement) {
+            focusElement.setAttribute("tabindex", "-1");
+            focusElement.focus();
+          }
+        });
       }
     });
   });
