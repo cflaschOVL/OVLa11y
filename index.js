@@ -1,4 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Skip link functionality
+  const skipLinks = document.querySelectorAll(".skip-link");
+
+  skipLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href").substring(1);
+      let focusElement = null;
+
+      if (targetId === "main-navigation") {
+        // Focus the first focusable link in the navigation
+        const nav = document.getElementById(targetId);
+        const firstLink = nav.querySelector("a[href]");
+        if (firstLink) {
+          focusElement = firstLink;
+        }
+      } else if (targetId === "main-content") {
+        // Focus the first visible headline in main content
+        focusElement = document.getElementById("main-heading");
+      } else if (targetId === "footer") {
+        // Focus the Quick Links heading
+        focusElement = document.getElementById("quick-links");
+      }
+
+      if (focusElement) {
+        focusElement.focus();
+        // Scroll into view if needed
+        focusElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
   // Accordion functionality
   const accordionTriggers = document.querySelectorAll(".accordion-trigger");
 
