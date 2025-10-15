@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
       let focusElement = null;
 
       if (targetId === "main-navigation") {
-        // Focus the first link in the navigation
-        focusElement = document.getElementById("nav-home-link");
+        // Focus the navigation element itself
+        focusElement = document.getElementById(targetId);
       } else if (targetId === "main-content") {
         // Focus the first visible headline in main content
         focusElement = document.getElementById("main-heading");
@@ -20,19 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (focusElement) {
-        // For better mobile screen reader support, ensure element is in viewport first
-        focusElement.scrollIntoView({ behavior: "instant", block: "center" });
-
-        // Use requestAnimationFrame to ensure DOM is ready, then focus
-        requestAnimationFrame(() => {
-          focusElement.focus();
-
-          // Ensure the focus actually took - some screen readers need this
-          if (document.activeElement !== focusElement) {
-            focusElement.setAttribute("tabindex", "-1");
-            focusElement.focus();
-          }
-        });
+        focusElement.focus();
+        // Scroll into view if needed
+        focusElement.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
@@ -93,19 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const scrtSpot = document.getElementById("acc3-panel-content-4");
-  if (scrtSpot) {
-    const scrtButton = document.createElement("button");
-    scrtButton.className = "sr-only";
-    scrtButton.tabIndex = 0;
-    scrtButton.innerHTML = "<strong>Spongebob</strong>";
-
-    const randomId = Math.random().toString(36).substring(2);
-    scrtButton.id = `btn-${randomId}`;
-
-    scrtSpot.appendChild(scrtButton);
-  }
-
   // Disabled button functionality removed
   // Mobile menu functionality
   const menuToggle = document.querySelector(".menu-toggle");
@@ -138,6 +115,19 @@ document.addEventListener("DOMContentLoaded", function () {
         menuToggle.focus();
       }
     });
+  }
+
+  const scrtSpot = document.getElementById("acc3-panel-content-4");
+  if (scrtSpot) {
+    const scrtButton = document.createElement("button");
+    scrtButton.className = "sr-only";
+    scrtButton.tabIndex = 0;
+    scrtButton.innerHTML = "<strong>Spongebob</strong>";
+
+    const randomId = Math.random().toString(36).substring(2);
+    scrtButton.id = `btn-${randomId}`;
+
+    scrtSpot.appendChild(scrtButton);
   }
 
   // Focus trap functionality
