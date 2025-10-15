@@ -14,7 +14,7 @@ body {
 }
 
 /* Full screen overlay */
-body::before {
+/* body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -24,7 +24,7 @@ body::before {
   background-color: #000;
   z-index: 999999;
   pointer-events: none;
-}
+} */
 
 /* Accessibility - Skip Links */
 .skip-links {
@@ -108,8 +108,9 @@ body::before {
 }
 
 /* Navigation Styles */
-#main-navigation {
-  outline: none;
+#main-navigation:focus {
+  outline: 3px solid #4a90e2;
+  outline-offset: 4px;
 }
 
 #main-navigation ul {

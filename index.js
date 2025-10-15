@@ -9,8 +9,32 @@ document.addEventListener("DOMContentLoaded", function () {
       let focusElement = null;
 
       if (targetId === "main-navigation") {
-        // Focus the navigation element itself
-        focusElement = document.getElementById("main-navigation");
+        const navElement = document.getElementById("main-navigation");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        // If navigation is hidden (mobile menu closed), open it first
+        if (
+          menuToggle &&
+          menuToggle.getAttribute("aria-expanded") === "false"
+        ) {
+          // Open the mobile menu
+          menuToggle.setAttribute("aria-expanded", "true");
+          navElement.classList.add("active");
+          menuToggle.setAttribute("aria-label", "Close navigation menu");
+
+          // Wait for visibility transition to complete before focusing
+          setTimeout(() => {
+            const firstLink = navElement.querySelector("a[href]");
+            if (firstLink) {
+              firstLink.focus();
+            }
+          }, 50); // Small delay to ensure visibility: visible is applied
+          return; // Exit early since we're handling focus in setTimeout
+        } else {
+          // Desktop: focus first link
+          const firstLink = navElement.querySelector("a[href]");
+          focusElement = firstLink || navElement;
+        }
       } else if (targetId === "main-content") {
         // Focus the first visible headline in main content
         focusElement = document.getElementById("main-heading");
