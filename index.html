@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accessible Website Demo</title>
+    <title>Barrierefreie Website Demo</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- Skip Links -->
     <div class="skip-links">
-      <a href="#main-navigation" class="skip-link">Skip to navigation</a>
-      <a href="#main-content" class="skip-link">Skip to main content</a>
-      <a href="#footer" class="skip-link">Skip to footer</a>
+      <a href="#main-navigation" class="skip-link">Zur Navigation springen</a>
+      <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+      <a href="#footer" class="skip-link">Zur Fußzeile springen</a>
     </div>
 
     <!-- Header -->
     <header role="banner" class="site-header">
       <div class="header-content">
-        <a href="./" class="logo" aria-label="Home">
+        <a href="./" class="logo" aria-label="Startseite">
           <img
             src="logo.png"
             srcset="logo.png 150w"
@@ -34,28 +34,28 @@
           class="menu-toggle"
           aria-expanded="false"
           aria-controls="main-navigation"
-          aria-label="Open navigation menu"
+          aria-label="Navigationsmenü öffnen"
         >
           <span class="hamburger"></span>
-          <span class="sr-only">Menu</span>
+          <span class="sr-only">Menü</span>
         </button>
 
         <nav
           class="skip-link-target"
           id="main-navigation"
           role="navigation"
-          aria-label="Main navigation"
+          aria-label="Hauptnavigation"
           tabindex="-1"
         >
           <ul>
-            <li><a href="#" aria-current="page">Home</a></li>
+            <li><a href="#" aria-current="page">Startseite</a></li>
             <li>
               <a
                 href="#"
                 class="disabled-link"
                 aria-disabled="true"
                 onclick="event.preventDefault()"
-                >About</a
+                >Über uns</a
               >
             </li>
             <li>
@@ -64,7 +64,7 @@
                 class="disabled-link"
                 aria-disabled="true"
                 onclick="event.preventDefault()"
-                >Services</a
+                >Dienstleistungen</a
               >
             </li>
             <li>
@@ -73,7 +73,7 @@
                 class="disabled-link"
                 aria-disabled="true"
                 onclick="event.preventDefault()"
-                >Contact</a
+                >Kontakt</a
               >
             </li>
           </ul>
@@ -83,15 +83,15 @@
 
     <!-- Main Content -->
     <main id="main-content" role="main">
-      <h1 tabindex="-1" class="sr-only skip-link-target">Main Content</h1>
+      <h1 tabindex="-1" class="sr-only skip-link-target">Hauptinhalt</h1>
       <!-- Hero Section -->
-      <section class="hero" aria-label="Hero section">
+      <section class="hero" aria-label="Hero-Bereich">
         <img
           class="hero-image"
           src="hero.png"
           srcset="hero-mobile.png 768w, hero.png 1920w"
           sizes="100vw"
-          alt="The Overlap Planetary System"
+          alt="Das Overlap Planetensystem"
           width="1920"
           height="600"
           loading="eager"
@@ -101,13 +101,13 @@
 
       <!-- Content Section -->
       <section class="content-section">
-        <h1 tabindex="-1" id="main-heading">Welcome to Our Accessible Website Test</h1>
+        <h1 tabindex="-1" id="main-heading">Willkommen zu unserem Barrierefreiheits-Test</h1>
         <p>
-          This Website is a test for accessibility.
+          Diese Website ist ein Test für Barrierefreiheit.
         </p>
 
         <div class="accordion-section">
-          <h2>Frequently Asked Questions</h2>
+          <h2>Häufig gestellte Fragen</h2>
 
           <div class="accordion-item">
             <h3>
@@ -119,7 +119,7 @@
                 id="acc1-header"
               >
                 <span class="accordion-title"
-                  >What does "A11y" stand for?</span
+                  >Was bedeutet "A11y"?</span
                 >
                 <span class="accordion-icon" aria-hidden="true"></span>
               </button>
@@ -133,7 +133,7 @@
             >
               <div class="accordion-panel-inner">
                 <p>
-                  "A11y" stands for Accessibility.
+                  "A11y" steht für Barrierefreiheit.
                 </p>
               </div>
             </div>
@@ -148,7 +148,7 @@
                 aria-controls="acc2-panel"
                 id="acc2-header"
               >
-                <span class="accordion-title">What is the purpose of this website?</span>
+                <span class="accordion-title">Was ist der Zweck dieser Website?</span>
                 <span class="accordion-icon" aria-hidden="true"></span>
               </button>
             </h3>
@@ -161,7 +161,7 @@
             >
               <div class="accordion-panel-inner">
                 <p>
-                  This website is just a test for accessibility.
+                  Diese Website ist nur ein Test für Barrierefreiheit.
                 </p>
               </div>
             </div>
@@ -176,7 +176,7 @@
                 aria-controls="acc3-panel"
                 id="acc3-header"
               >
-                <span class="accordion-title">What is the code behind this website?</span>
+                <span class="accordion-title">Was ist der Code hinter dieser Website?</span>
                 <span class="accordion-icon" aria-hidden="true"></span>
               </button>
             </h3>
@@ -189,7 +189,7 @@
             >
               <div class="accordion-panel-inner">
                 <p>
-                  The next screen reader only element will reveal the code behind this website.
+                  Das nächste nur für Screenreader gedachte Element wird den Code hinter dieser Website offenbaren.
                   <div id="acc3-panel-content-4"></div>
                 </p>
               </div>
@@ -201,7 +201,7 @@
 
     <!-- Footer -->
     <footer id="footer" role="contentinfo">
-      <h2 tabindex="-1" class="sr-only skip-link-target">Footer</h2>
+      <h2 tabindex="-1" class="sr-only skip-link-target">Fußzeile</h2>
       <div class="footer-content">
         <div class="footer-section">
           <h3 tabindex="-1" id="quick-links">Quick Links</h3>
@@ -212,7 +212,7 @@
                 class="disabled-link"
                 aria-disabled="true"
                 onclick="event.preventDefault()"
-                >Privacy Policy</a
+                >Datenschutzerklärung</a
               >
             </li>
             <li>
@@ -221,7 +221,7 @@
                 class="disabled-link"
                 aria-disabled="true"
                 onclick="event.preventDefault()"
-                >Terms of Service</a
+                >Nutzungsbedingungen</a
               >
             </li>
             <li>
@@ -230,16 +230,16 @@
                 class="disabled-link"
                 aria-disabled="true"
                 onclick="event.preventDefault()"
-                >Accessibility Statement</a
+                >Barrierefreiheits-Erklärung</a
               >
             </li>
           </ul>
         </div>
         <div class="footer-section">
-          <h3>Contact Us</h3>
+          <h3>Kontaktieren Sie uns</h3>
           <address>
             <p>
-              Email:
+              E-Mail:
               <a
                 href="#"
                 class="disabled-link"
@@ -249,12 +249,12 @@
               >
             </p>
             <p>
-              Phone:
+              Telefon:
               <a
                 href="#"
                 class="disabled-link"
                 aria-disabled="true"
-                aria-label="Phone Number: 01-23-456-789"
+                aria-label="Telefonnummer: 01-23-456-789"
                 onclick="event.preventDefault()"
                 >01-23-456-789</a
               >
@@ -263,7 +263,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Accessible Website Demo. All rights reserved.</p>
+        <p>&copy; 2025 Barrierefreie Website Demo. Alle Rechte vorbehalten.</p>
       </div>
     </footer>
 
