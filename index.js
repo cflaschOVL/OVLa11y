@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrtButton = document.createElement("button");
     scrtButton.className = "sr-only";
     scrtButton.tabIndex = 0;
+    scrtButton.ariaLabel = "Das Codewort ist: Spongebob";
     scrtButton.innerHTML = "<strong>Spongebob</strong>";
 
     const randomId = Math.random().toString(36).substring(2);
